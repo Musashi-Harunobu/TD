@@ -12,11 +12,10 @@ public class UIManager : MonoBehaviour
     public Button btnExport;
     public Button btnImport;
 
-    [Header("Building buttons (optional dropdown)")]
+    [Header("Building buttons")]
     public Button btnHouse;
     public Button btnFactory;
     public Button btnFarm;
-    public TMP_Dropdown dropdown;
 
     [Header("Labels")]
     public TextMeshProUGUI modeText;
@@ -54,12 +53,6 @@ public class UIManager : MonoBehaviour
             if (btnFarm)    btnFarm.onClick.AddListener(() => Game.I.buildController.SetActiveBuilding(idFarm));
         }
 
-        if (dropdown)
-        {
-            dropdown.options = db.All.Select(b => new TMP_Dropdown.OptionData(b.name)).ToList();
-            dropdown.onValueChanged.AddListener(i => Game.I.buildController.SetActiveBuilding(db.All[i].id));
-        }
-
         UpdateModeText(Game.I.buildController.Mode);
     }
 
@@ -68,13 +61,5 @@ public class UIManager : MonoBehaviour
         if (!modeText) return;
         modeText.text = mode == BuildMode.Place ? "Режим: Размещение" : "Режим: Удаление";
         modeText.color = mode == BuildMode.Place ? new Color(0.2f,0.9f,0.3f) : new Color(0.95f,0.3f,0.3f);
-    }
-
-    public void SetDropdownTo(string id)
-    {
-        if (!dropdown) return;
-        var db = Game.I.database;
-        var idx = db.All.FindIndex(b => b.id == id);
-        if (idx >= 0) dropdown.value = idx;
     }
 }

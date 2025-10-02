@@ -117,7 +117,6 @@ public class BuildController : MonoBehaviour
     {
         ActiveBuildingId = id;
         UpdateGhostSprite();
-        Game.I.ui.SetDropdownTo(id);
     }
 
     private void Update()
