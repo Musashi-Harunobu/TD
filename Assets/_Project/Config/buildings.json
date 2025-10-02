@@ -1,0 +1,7 @@
+{
+  "buildings": [
+    {"id":"house","name":"Дом","sprite":"Sprites/House","w":2,"h":2},
+    {"id":"factory","name":"Фабрика","sprite":"Sprites/Factory","w":3,"h":2},
+    {"id":"farm","name":"Ферма","sprite":"Sprites/Farm","w":2,"h":3}
+  ]
+}
